@@ -61,4 +61,8 @@ public class CarService {
     public List<Car> searchList(String make, String model, String type, String used) {
         return repo.findByMakeOrModelOrTypeOrUsed(make, model, type, used);
     }
+
+    public List<Car> getLatestCars() {
+        return repo.findAllDescLimitedTo(3);
+    }
 }

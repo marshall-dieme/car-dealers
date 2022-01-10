@@ -71,5 +71,10 @@ public class CarController {
     public ResponseEntity<List<Car>> search(@RequestParam(defaultValue = "null") String used, @RequestParam(defaultValue = "null") String type, @RequestParam(defaultValue = "null") String make, @RequestParam(defaultValue = "null") String model) {
         return new ResponseEntity<>(service.searchList(make, model, type, used), HttpStatus.OK);
     }
+
+    @GetMapping(value="/latest")
+    public ResponseEntity<List<Car>> getLatest() {
+        return new ResponseEntity<List<Car>>(service.getLatestCars(), HttpStatus.OK);
+    }
     
 }

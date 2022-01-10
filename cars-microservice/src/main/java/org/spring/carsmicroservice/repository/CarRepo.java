@@ -16,4 +16,6 @@ public interface CarRepo extends JpaRepository<Car, Integer> {
     public List<Car> findDistinctByType();
 
     public List<Car> findByMakeOrModelOrTypeOrUsed(String make, String model, String type, String used);
+
+    public List<Car> findAllDescLimitedTo(int limit);
 }
