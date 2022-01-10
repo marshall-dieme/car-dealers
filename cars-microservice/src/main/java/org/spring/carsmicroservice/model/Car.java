@@ -20,15 +20,16 @@ public class Car {
     @Column(length = 100)
     private String model;
 
+    @Column(length = 100)
+    private String type;
+
     private int year;
 
     private int mileage;
 
     @Column(length = 100)
-    private String interior;
+    private String color;
 
-    @Column(length = 100)
-    private String exterior;
 
     private int doors;
 
@@ -55,14 +56,13 @@ public class Car {
     public Car() {
     }
 
-    public Car(int id, String make, String model, int year, int mileage, String interior, String exterior, int doors, String engine, String drivetrain, String transmission, String vinNumber, String stockNumber, String[] pictures, int quantity) {
+    public Car(int id, String make, String model, int year, int mileage, String color, int doors, String engine, String drivetrain, String transmission, String vinNumber, String stockNumber, String[] pictures, int quantity) {
         this.id = id;
         this.make = make;
         this.model = model;
         this.year = year;
         this.mileage = mileage;
-        this.interior = interior;
-        this.exterior = exterior;
+        this.color = color;
         this.doors = doors;
         this.engine = engine;
         this.drivetrain = drivetrain;
@@ -111,22 +111,6 @@ public class Car {
 
     public void setMileage(int mileage) {
         this.mileage = mileage;
-    }
-
-    public String getInterior() {
-        return this.interior;
-    }
-
-    public void setInterior(String interior) {
-        this.interior = interior;
-    }
-
-    public String getExterior() {
-        return this.exterior;
-    }
-
-    public void setExterior(String exterior) {
-        this.exterior = exterior;
     }
 
     public int getDoors() {
@@ -193,81 +177,6 @@ public class Car {
         this.quantity = quantity;
     }
 
-    public Car id(int id) {
-        setId(id);
-        return this;
-    }
-
-    public Car make(String make) {
-        setMake(make);
-        return this;
-    }
-
-    public Car model(String model) {
-        setModel(model);
-        return this;
-    }
-
-    public Car year(int year) {
-        setYear(year);
-        return this;
-    }
-
-    public Car mileage(int mileage) {
-        setMileage(mileage);
-        return this;
-    }
-
-    public Car interior(String interior) {
-        setInterior(interior);
-        return this;
-    }
-
-    public Car exterior(String exterior) {
-        setExterior(exterior);
-        return this;
-    }
-
-    public Car doors(int doors) {
-        setDoors(doors);
-        return this;
-    }
-
-    public Car engine(String engine) {
-        setEngine(engine);
-        return this;
-    }
-
-    public Car drivetrain(String drivetrain) {
-        setDrivetrain(drivetrain);
-        return this;
-    }
-
-    public Car transmission(String transmission) {
-        setTransmission(transmission);
-        return this;
-    }
-
-    public Car vinNumber(String vinNumber) {
-        setVinNumber(vinNumber);
-        return this;
-    }
-
-    public Car stockNumber(String stockNumber) {
-        setStockNumber(stockNumber);
-        return this;
-    }
-
-    public Car pictures(String[] pictures) {
-        setPictures(pictures);
-        return this;
-    }
-
-    public Car quantity(int quantity) {
-        setQuantity(quantity);
-        return this;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (o == this)
@@ -276,12 +185,12 @@ public class Car {
             return false;
         }
         Car car = (Car) o;
-        return id == car.id && Objects.equals(make, car.make) && Objects.equals(model, car.model) && year == car.year && mileage == car.mileage && Objects.equals(interior, car.interior) && Objects.equals(exterior, car.exterior) && doors == car.doors && Objects.equals(engine, car.engine) && Objects.equals(drivetrain, car.drivetrain) && Objects.equals(transmission, car.transmission) && Objects.equals(vinNumber, car.vinNumber) && Objects.equals(stockNumber, car.stockNumber) && Objects.equals(pictures, car.pictures) && quantity == car.quantity;
+        return id == car.id;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, make, model, year, mileage, interior, exterior, doors, engine, drivetrain, transmission, vinNumber, stockNumber, pictures, quantity);
+        return Objects.hash(id, make, model, year, mileage, color, doors, engine, drivetrain, transmission, vinNumber, stockNumber, pictures, quantity);
     }
 
     @Override
@@ -292,8 +201,7 @@ public class Car {
             ", model='" + getModel() + "'" +
             ", year='" + getYear() + "'" +
             ", mileage='" + getMileage() + "'" +
-            ", interior='" + getInterior() + "'" +
-            ", exterior='" + getExterior() + "'" +
+            ", interior='" + getColor() + "'" +
             ", doors='" + getDoors() + "'" +
             ", engine='" + getEngine() + "'" +
             ", drivetrain='" + getDrivetrain() + "'" +
@@ -303,6 +211,36 @@ public class Car {
             ", pictures='" + getPictures() + "'" +
             ", quantity='" + getQuantity() + "'" +
             "}";
+    }
+
+
+    /**
+     * @return String return the type
+     */
+    public String getType() {
+        return type;
+    }
+
+    /**
+     * @param type the type to set
+     */
+    public void setType(String type) {
+        this.type = type;
+    }
+
+
+    /**
+     * @return String return the color
+     */
+    public String getColor() {
+        return color;
+    }
+
+    /**
+     * @param color the color to set
+     */
+    public void setColor(String color) {
+        this.color = color;
     }
 
 }

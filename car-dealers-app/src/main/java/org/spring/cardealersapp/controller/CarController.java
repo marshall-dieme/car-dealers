@@ -14,9 +14,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.PutMapping;
 
 
-
-
-
 @RestController
 public class CarController {
     
@@ -47,6 +44,6 @@ public class CarController {
     public Boolean deleteCar(@PathVariable Integer id) {
         return proxy.deleteCar(id);
     }
-
+    
 
 }

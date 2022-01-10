@@ -1,6 +1,7 @@
 package org.spring.carsmicroservice.service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.spring.carsmicroservice.model.Car;
 import org.spring.carsmicroservice.repository.CarRepo;
@@ -43,5 +44,21 @@ public class CarService {
         }
 
         return false;
+    }
+
+    public List<String> getMake() {
+        return repo.findDistinctByMake().stream().map(c -> c.getMake()).collect(Collectors.toList());
+    }
+
+    public List<String> getModel() {
+        return repo.findDistinctByModel().stream().map(c -> c.getModel()).collect(Collectors.toList());
+    }
+
+    public List<String> getType() {
+        return repo.findDistinctByType().stream().map(c -> c.getType()).collect(Collectors.toList());
+    }
+
+    public List<Car> searchList(String make, String model, String type, String used) {
+        return repo.findByMakeOrModelOrTypeOrUsed(make, model, type, used);
     }
 }

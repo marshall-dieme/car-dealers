@@ -15,6 +15,10 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+
+
 
 
 @RestController
@@ -48,4 +52,24 @@ public class CarController {
         return new ResponseEntity<Boolean>(service.deleteCar(id), HttpStatus.OK);
     }
 
+    @GetMapping(value="/getMake")
+    public ResponseEntity<List<String>> getMake() {
+        return new ResponseEntity<List<String>>(service.getMake(), HttpStatus.OK);
+    }
+
+    @GetMapping(value="/getModel")
+    public ResponseEntity<List<String>> getModel() {
+        return new ResponseEntity<List<String>>(service.getModel(), HttpStatus.OK);
+    }
+
+    @GetMapping(value="/getType")
+    public ResponseEntity<List<String>> getType() {
+        return new ResponseEntity<List<String>>(service.getType(), HttpStatus.OK);
+    }
+
+    @GetMapping(value="/search")
+    public ResponseEntity<List<Car>> search(@RequestParam(defaultValue = "null") String used, @RequestParam(defaultValue = "null") String type, @RequestParam(defaultValue = "null") String make, @RequestParam(defaultValue = "null") String model) {
+        return new ResponseEntity<>(service.searchList(make, model, type, used), HttpStatus.OK);
+    }
+    
 }
