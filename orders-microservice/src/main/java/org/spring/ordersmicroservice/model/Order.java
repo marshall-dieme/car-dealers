@@ -17,7 +17,7 @@ import javax.persistence.TemporalType;
 public class Order {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @Column(unique = true, length = 30)
