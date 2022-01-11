@@ -4,6 +4,7 @@ import org.spring.cardealersapp.model.User;
 import org.spring.cardealersapp.web.RequestEntity;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -18,5 +19,8 @@ public interface UserProxy {
 
     @PostMapping(value="/login")
     public User login(@RequestBody RequestEntity user);
+
+    @GetMapping(value="/testFeign")
+    public String testFeign();
 
 }

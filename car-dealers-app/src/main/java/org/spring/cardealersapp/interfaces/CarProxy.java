@@ -22,6 +22,7 @@ public interface CarProxy {
     @GetMapping(value="/cars")
     public List<Car> getCars();
 
+
     @GetMapping(value="/cars/{id}")
     public Car getCar(@PathVariable Integer id);
 

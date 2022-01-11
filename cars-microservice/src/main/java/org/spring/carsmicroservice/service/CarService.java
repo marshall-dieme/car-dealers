@@ -1,5 +1,6 @@
 package org.spring.carsmicroservice.service;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -63,6 +64,6 @@ public class CarService {
     }
 
     public List<Car> getLatestCars() {
-        return repo.findAllDescLimitedTo(3);
+        return repo.findAll().stream().sorted(Collections.reverseOrder()).limit(6).toList();
     }
 }

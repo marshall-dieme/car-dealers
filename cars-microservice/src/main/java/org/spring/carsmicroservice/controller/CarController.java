@@ -76,5 +76,10 @@ public class CarController {
     public ResponseEntity<List<Car>> getLatest() {
         return new ResponseEntity<List<Car>>(service.getLatestCars(), HttpStatus.OK);
     }
+
+    @GetMapping(value="/testFeign")
+    public ResponseEntity<String> testFeign() {
+        return new ResponseEntity<String>("Test is OK", HttpStatus.OK);
+    }
     
 }

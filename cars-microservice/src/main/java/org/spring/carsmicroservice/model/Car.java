@@ -52,11 +52,14 @@ public class Car {
 
     private int quantity;
 
+    @Column(length = 100)
+    private String used;
+
 
     public Car() {
     }
 
-    public Car(int id, String make, String model, int year, int mileage, String color, int doors, String engine, String drivetrain, String transmission, String vinNumber, String stockNumber, String[] pictures, int quantity) {
+    public Car(int id, String make, String model, int year, int mileage, String color, int doors, String engine, String drivetrain, String transmission, String vinNumber, String stockNumber, String[] pictures, int quantity, String used) {
         this.id = id;
         this.make = make;
         this.model = model;
@@ -71,6 +74,7 @@ public class Car {
         this.stockNumber = stockNumber;
         this.pictures = pictures;
         this.quantity = quantity;
+        this.used = used;
     }
 
     public int getId() {
@@ -241,6 +245,21 @@ public class Car {
      */
     public void setColor(String color) {
         this.color = color;
+    }
+
+
+    /**
+     * @return String return the used
+     */
+    public String getUsed() {
+        return used;
+    }
+
+    /**
+     * @param used the used to set
+     */
+    public void setUsed(String used) {
+        this.used = used;
     }
 
 }
