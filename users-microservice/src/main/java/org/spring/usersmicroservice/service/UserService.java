@@ -15,8 +15,8 @@ public class UserService {
         return repo.saveAndFlush(user);
     }
 
-    public User login(String username, String password) {
-        return repo.findAll().get(1);
+    public User login(String username) {
+        return repo.findByUsername(username);
     }
 
     public String testFeign() {

@@ -26,7 +26,7 @@ public class UserController {
 
     @PostMapping(value="/login")
     public ResponseEntity<User> login(@RequestBody RequestEntity requestEntity) {
-        return new ResponseEntity<User>(service.login(requestEntity.getUsername(), requestEntity.getPassword()), HttpStatus.OK);
+        return new ResponseEntity<User>(service.login(requestEntity.getUsername()), HttpStatus.OK);
     }
 
     @GetMapping(value="/testFeign")

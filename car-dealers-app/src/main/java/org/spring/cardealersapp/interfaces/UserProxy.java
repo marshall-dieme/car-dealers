@@ -1,7 +1,6 @@
 package org.spring.cardealersapp.interfaces;
 
 import org.spring.cardealersapp.model.User;
-import org.spring.cardealersapp.model.Admin;
 import org.spring.cardealersapp.web.RequestEntity;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Component;
@@ -20,12 +19,6 @@ public interface UserProxy {
 
     @PostMapping(value="/login")
     public User login(@RequestBody RequestEntity user);
-
-    @PostMapping(value="/admin/register")
-    public Admin adminRegistration(@RequestBody Admin user);
-
-    @PostMapping(value="/admin/login")
-    public Admin adminLogin(@RequestBody RequestEntity user);
 
     @GetMapping(value="/testFeign")
     public String testFeign();

@@ -28,11 +28,13 @@ public class User {
 
     private String password;
 
+    private String profile;
+
 
     public User() {
     }
 
-    public User(int id, String fullName, String phone, String email, String zipCode, String username, String password) {
+    public User(int id, String fullName, String phone, String email, String zipCode, String username, String password, String profile) {
         this.id = id;
         this.fullName = fullName;
         this.phone = phone;
@@ -40,6 +42,7 @@ public class User {
         this.zipCode = zipCode;
         this.username = username;
         this.password = password;
+        this.profile = profile;
     }
 
     public int getId() {
@@ -160,6 +163,21 @@ public class User {
             ", username='" + getUsername() + "'" +
             ", password='" + getPassword() + "'" +
             "}";
+    }
+
+
+    /**
+     * @return String return the profile
+     */
+    public String getProfile() {
+        return profile;
+    }
+
+    /**
+     * @param profile the profile to set
+     */
+    public void setProfile(String profile) {
+        this.profile = profile;
     }
 
 }
