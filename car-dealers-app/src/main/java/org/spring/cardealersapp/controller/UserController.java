@@ -5,6 +5,8 @@ import org.spring.cardealersapp.interfaces.UserProxy;
 import org.spring.cardealersapp.model.Login;
 import org.spring.cardealersapp.model.User;
 import org.spring.cardealersapp.service.UserService;
+import org.spring.cardealersapp.utils.JwtTokenUtil;
+import org.spring.cardealersapp.web.JwtResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,7 +14,6 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -31,6 +32,9 @@ public class UserController {
 
     @Autowired
     UserService service;
+
+    @Autowired
+    JwtTokenUtil tokenUtil;
     
     @PostMapping(value="/register")
     public User registration(@RequestBody User u) {
@@ -40,15 +44,14 @@ public class UserController {
     }
 
     @PostMapping(value="/login", consumes = "application/json")
-    public UserDetails login(@RequestBody Login login) {
+    public ResponseEntity<JwtResponse> login(@RequestBody Login login) {
         authenticate(login.getUsername(), login.getPassword());
-        return proxy.login(login);
+        User user = proxy.login(login);
+        final String token = tokenUtil.generateToken(user);
+
+        return new ResponseEntity<>(new JwtResponse(token), HttpStatus.OK);
     }
 
-    @PostMapping(value="/authenticate")
-    public User authentication(@RequestBody String username) {
-        return proxy.getByUsername(username);
-    }
     
 
     @GetMapping(value="/test")
