@@ -1,14 +1,13 @@
-package org.spring.usersmicroservice.web;
+package org.spring.cardealersapp.model;
 
-public class RequestEntity {
+public class Login {
     private String username;
     private String password;
 
-
-    public RequestEntity() {
+    public Login() {
     }
 
-    public RequestEntity(String username, String password) {
+    public Login(String username, String password) {
         this.username = username;
         this.password = password;
     }

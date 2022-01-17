@@ -1,8 +1,15 @@
 package org.spring.cardealersapp.model;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 import java.util.Objects;
 
-public class User {
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+public class User implements UserDetails {
     
     private int id;
 
@@ -18,11 +25,13 @@ public class User {
 
     private String password;
 
+    private String profile;
+
 
     public User() {
     }
 
-    public User(int id, String fullName, String phone, String email, String zipCode, String username, String password) {
+    public User(int id, String fullName, String phone, String email, String zipCode, String username, String password, String profile) {
         this.id = id;
         this.fullName = fullName;
         this.phone = phone;
@@ -30,6 +39,7 @@ public class User {
         this.zipCode = zipCode;
         this.username = username;
         this.password = password;
+        this.profile = profile;
     }
 
     public int getId() {
@@ -150,6 +160,52 @@ public class User {
             ", username='" + getUsername() + "'" +
             ", password='" + getPassword() + "'" +
             "}";
+    }
+
+
+    /**
+     * @return String return the profile
+     */
+    public String getProfile() {
+        return profile;
+    }
+
+    /**
+     * @param profile the profile to set
+     */
+    public void setProfile(String profile) {
+        this.profile = profile;
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        List<GrantedAuthority> authorities = new ArrayList<>();
+        authorities.add(new SimpleGrantedAuthority(profile));
+        return authorities;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        // TODO Auto-generated method stub
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        // TODO Auto-generated method stub
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        // TODO Auto-generated method stub
+        return false;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        // TODO Auto-generated method stub
+        return true;
     }
 
 }
